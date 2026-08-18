@@ -1,0 +1,40 @@
+{
+  "name": "dsh-session-follow-search",
+  "version": "0.1.0",
+  "description": "Web search for DeepSeek Harness that follows the session's currently selected LLM provider — same provider, baseURL, protocol, model and credential at every search, with an optional native-search override.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kir1ito/dsh-session-follow-search.git"
+  },
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-web": "*"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "web-search",
+    "provider"
+  ],
+  "license": "MIT"
+}

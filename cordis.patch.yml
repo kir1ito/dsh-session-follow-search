@@ -1,0 +1,25 @@
+# Mount dsh-session-follow-search and pin the web seam to it.
+
+# The base bundle declares the `web` row with `searchProvider: deepseek-official`.
+# Override that row so the seam selects this follow provider for search.
+- id: web
+  config:
+    searchProvider: session-follow-search
+
+# Insert the provider plugin row. By default search FOLLOWS the session's current
+# LLM provider (its url/key/protocol/model), and fails loud if that provider has
+# no native search — the LLM then picks its own next step.
+#
+# To pin search to the official DeepSeek native endpoint instead (when the
+# session provider cannot do native search), put `nativeSearch: true` here, or an
+# object with your own baseURL/apiKeyEnv/model:
+#   config:
+#     nativeSearch: true                 # official DeepSeek
+#     # nativeSearch:
+#     #   baseURL: https://.../anthropic/v1
+#     #   apiKeyEnv: DEEPSEEK_API_KEY
+#     #   model: deepseek-v4-flash
+- insert:
+    - id: session-follow-search
+      name: dsh-session-follow-search
+      config: {}
